@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-//apis routes
+//api routes
 Route::get('products', 'ProductController@index');
 Route::get('products/{product}', 'ProductController@show');
 Route::post('products', 'ProductController@store');
