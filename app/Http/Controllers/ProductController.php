@@ -7,9 +7,14 @@ use App\Product;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function adminProductsList()
     {
-        return Product::all();
+        return Product::select('Reference', 'name', 'buying_price', 'selling_price', 'quantity')->all();
+    }
+
+    public function userProductsList()
+    {
+        return Product::select('Reference', 'name', 'photo', 'discount', 'description', 'selling_price')->all();
     }
 
     public function show(Product $product)

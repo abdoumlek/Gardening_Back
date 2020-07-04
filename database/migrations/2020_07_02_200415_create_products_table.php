@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->text('photo');
             $table->integer('quantity');
-            $table->decimal('sellingPrice');
-            $table->decimal('BuyingPrice');
+            $table->decimal('selling_price');
+            $table->decimal('buying_price');
             $table->decimal('discount');
             $table->timestamps();
         });

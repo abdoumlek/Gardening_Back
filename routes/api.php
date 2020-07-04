@@ -18,7 +18,8 @@ use Illuminate\Http\Request;
 // });
 
 //api routes
-Route::get('products', 'ProductController@index');
+Route::get('/products/admin', 'ProductController@adminProductsList');//liste des produits admins
+Route::get('/products/user', 'ProductController@userProductsList');//liste des produits utilisateurs
 Route::get('products/{product}', 'ProductController@show');
 Route::post('products', 'ProductController@store');
 Route::put('products/{product}', 'ProductController@update');
