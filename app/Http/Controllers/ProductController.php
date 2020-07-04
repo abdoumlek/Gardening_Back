@@ -9,15 +9,20 @@ class ProductController extends Controller
 {
     public function adminProductsList()
     {
-        return Product::select('Reference', 'name', 'buying_price', 'selling_price', 'quantity')->get();
+        return Product::select('category_id','id','Reference', 'name', 'buying_price', 'selling_price', 'quantity')->get();
     }
 
     public function userProductsList()
     {
-        return Product::select('Reference', 'name', 'photo', 'discount', 'description', 'selling_price')->get();
+        return Product::select('category_id','id','Reference', 'name', 'photo', 'discount', 'selling_price')->get();
     }
 
-    public function show(Product $product)
+    public function userGetProductById(Product $product)
+    {
+        return Product::where('id', $product->id)->select('Reference', 'name', 'photo', 'discount', 'description', 'selling_price')->first();
+    
+    }
+    public function adminGetProductById(Product $product)
     {
         return $product;
     }
