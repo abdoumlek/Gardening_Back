@@ -9,12 +9,12 @@ class ProductController extends Controller
 {
     public function adminProductsList()
     {
-        return Product::select('Reference', 'name', 'buying_price', 'selling_price', 'quantity')->all();
+        return Product::select('Reference', 'name', 'buying_price', 'selling_price', 'quantity')->get();
     }
 
     public function userProductsList()
     {
-        return Product::select('Reference', 'name', 'photo', 'discount', 'description', 'selling_price')->all();
+        return Product::select('Reference', 'name', 'photo', 'discount', 'description', 'selling_price')->get();
     }
 
     public function show(Product $product)
