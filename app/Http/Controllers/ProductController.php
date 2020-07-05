@@ -9,22 +9,23 @@ class ProductController extends Controller
 {
     public function adminProductsList()
     {
-        return Product::select('category_id','id','reference', 'name', 'buying_price', 'selling_price', 'quantity')->get();
+        return Product::join('categories', 'categories.id', '=', 'category_id')->select('categories.name as category','products.id','reference', 'products.name', 'buying_price', 'selling_price', 'quantity')->get();
     }
 
     public function userProductsList()
     {
-        return Product::select('category_id','id','reference', 'name', 'photo', 'discount', 'selling_price')->get();
+        return Product::join('categories', 'categories.id', '=', 'category_id')->select('categories.name  as category','products.id','reference', 'products.name', 'photo', 'discount', 'selling_price')->get();
     }
 
     public function userGetProductById(Product $product)
     {
-        return Product::where('id', $product->id)->select('reference', 'name', 'photo', 'discount', 'description', 'selling_price')->first();
+        return Product::join('categories', 'categories.id', '=', 'category_id')->where('products.id', $product->id)->select('categories.name  as category','reference', 'products.name', 'photo', 'discount', 'products.description', 'selling_price')->first();
     
     }
     public function adminGetProductById(Product $product)
     {
-        return $product;
+        return Product::join('categories', 'categories.id', '=', 'category_id')->where('products.id', $product->id)->select('products.*','categories.name as category')->first();
+
     }
 
     public function store(Request $request)
