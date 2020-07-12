@@ -18,17 +18,24 @@ use Illuminate\Http\Request;
 // });
 
 //api routes
-// Route::middleware(['cors'])->group(function () {
-Route::get('products/admin', 'ProductController@adminProductsList'); //liste des produits admins
-Route::get('products/user', 'ProductController@userProductsList'); //liste des produits utilisateurs
-Route::get('products/admin/{product}', 'ProductController@adminGetProductById'); //get porduct as admin
-Route::get('products/user/{product}', 'ProductController@userGetProductById'); //get product as user
-Route::post('products', 'ProductController@store'); //add product admin only
-Route::put('products/{product}', 'ProductController@update'); //update product admin only
-Route::delete('products/{product}', 'ProductController@delete'); //delete product admin only
+Route::middleware('auth:api')->group(function () {
+    Route::get('users', 'UserController@adminUsersList'); //users list
+    Route::get('products/admin', 'ProductController@adminProductsList'); //liste des produits admins
+    Route::get('products/admin/{product}', 'ProductController@adminGetProductById'); //get porduct as admin
+    Route::post('products', 'ProductController@store'); //add product admin only
+    Route::put('products/{product}', 'ProductController@update'); //update product admin only
+    Route::delete('products/{product}', 'ProductController@delete'); //delete product admin only
+    Route::post('categories', 'CategoryController@store'); //add category admin only
+    Route::put('categories/{category}', 'CategoryController@update'); //update category admin only
+    Route::delete('categories/{category}', 'CategoryController@delete'); //delete category admin only
+    Route::post('users/create', 'UserController@createUser'); //add User admin only
+});
 
+
+//Users
+Route::post('users/login', 'LoginController@login'); //add product admin only
+
+
+Route::get('products/user', 'ProductController@userProductsList'); //liste des produits utilisateurs
+Route::get('products/user/{product}', 'ProductController@userGetProductById'); //get product as user
 Route::get('categories', 'CategoryController@categoriesList'); //liste des produits admins
-Route::post('categories', 'CategoryController@store'); //add product admin only
-Route::put('categories/{category}', 'CategoryController@update'); //update product admin only
-Route::delete('categories/{category}', 'CategoryController@delete'); //delete product admin only
-// });

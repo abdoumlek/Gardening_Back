@@ -33,7 +33,21 @@ class Handler extends ExceptionHandler
      */
     public function report(Throwable $exception)
     {
+        // if ($exception instanceof OAuthServerException) {
+        //     try {
+        //         $logger = $this->container->make(LoggerInterface::class);
+        //     } catch (Exception $e) {
+        //         throw $exception; // throw the original exception
+        //     }
+
+        //     $logger->error(
+        //         $exception->getMessage(),
+        //         ['exception' => $exception]
+        //     );
+        //     return response()->json(['error' => 'Invalid Credentials.'],401);
+        // } else {
         parent::report($exception);
+        // }
     }
 
     /**
@@ -51,8 +65,8 @@ class Handler extends ExceptionHandler
         //         'error' => 'Resource not found'
         //     ], 404);
         // }
-    
-    
+
+
         return parent::render($request, $exception);
     }
 
@@ -65,10 +79,6 @@ class Handler extends ExceptionHandler
      */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
-        if ($request->expectsJson()) {
-            return response()->json(['error' => 'Unauthenticated.'], 401);
-        }
-
-        return redirect()->guest(route('login'));
+        return response()->json(['error' => 'Unauthenticated.'], 401);
     }
 }
