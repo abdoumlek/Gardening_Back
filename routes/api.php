@@ -21,7 +21,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->group(function () {
     Route::get('users', 'UserController@adminUsersList'); //users list
     Route::get('products/admin', 'ProductController@adminProductsList'); //liste des produits admins
-    Route::get('products/upload', 'ProductController@getUploadImageToken'); //liste des produits admins
     Route::get('products/admin/{product}', 'ProductController@adminGetProductById'); //get porduct as admin
     Route::post('products', 'ProductController@store'); //add product admin only
     Route::put('products/{product}', 'ProductController@update'); //update product admin only
@@ -29,6 +28,8 @@ Route::middleware('auth:api')->group(function () {
     Route::post('categories', 'CategoryController@store'); //add category admin only
     Route::put('categories/{category}', 'CategoryController@update'); //update category admin only
     Route::delete('categories/{category}', 'CategoryController@delete'); //delete category admin only
+    Route::post('users/create', 'UserController@createUser'); //add User admin only
+
 });
 
 
@@ -42,4 +43,4 @@ Route::get('categories', 'CategoryController@categoriesList'); //liste des produ
 
 
 // just for testing this has to go back to the authorized routes
-Route::post('users/create', 'UserController@createUser'); //add User admin only
+Route::get('products/upload', 'ProductController@getUploadImageToken'); //liste des produits admins
