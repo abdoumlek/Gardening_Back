@@ -19,6 +19,6 @@ class LoginController extends Controller
             return response()->json(['error' => 'Invalid Credentials.'], 401);
         }
         $accessToken = Auth::user()->createToken('authToken')->accessToken;
-        return response(['user'=>Auth::user(),'access_token'=>$accessToken]);
+        return response(['user' => Auth::user(), 'access_token' => $accessToken]);
     }
 }

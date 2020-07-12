@@ -21,6 +21,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->group(function () {
     Route::get('users', 'UserController@adminUsersList'); //users list
     Route::get('products/admin', 'ProductController@adminProductsList'); //liste des produits admins
+    Route::get('products/upload', 'ProductController@getUploadImageToken'); //liste des produits admins
     Route::get('products/admin/{product}', 'ProductController@adminGetProductById'); //get porduct as admin
     Route::post('products', 'ProductController@store'); //add product admin only
     Route::put('products/{product}', 'ProductController@update'); //update product admin only
