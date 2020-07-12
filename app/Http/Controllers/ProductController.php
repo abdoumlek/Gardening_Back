@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function adminProductsList()
     {
-        return Product::join('categories', 'categories.id', '=', 'category_id')->select('categories.name as category', 'products.id', 'reference', 'products.name', 'buying_price', 'selling_price', 'quantity')->get();
+        return Product::join('categories', 'categories.id', '=', 'category_id')->select('categories.name as category', 'products.id', 'reference', 'products.name', 'photo', 'buying_price', 'selling_price', 'quantity')->get();
     }
 
     public function userProductsList()
