@@ -29,7 +29,6 @@ Route::middleware('auth:api')->group(function () {
     Route::post('categories', 'CategoryController@store'); //add category admin only
     Route::put('categories/{category}', 'CategoryController@update'); //update category admin only
     Route::delete('categories/{category}', 'CategoryController@delete'); //delete category admin only
-    Route::post('users/create', 'UserController@createUser'); //add User admin only
 });
 
 
@@ -40,3 +39,7 @@ Route::post('users/login', 'LoginController@login'); //add product admin only
 Route::get('products/user', 'ProductController@userProductsList'); //liste des produits utilisateurs
 Route::get('products/user/{product}', 'ProductController@userGetProductById'); //get product as user
 Route::get('categories', 'CategoryController@categoriesList'); //liste des produits admins
+
+
+// just for testing this has to go back to the authorized routes
+Route::post('users/create', 'UserController@createUser'); //add User admin only
