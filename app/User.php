@@ -15,6 +15,7 @@ class User extends Authenticatable
     protected $attributes = [
         'phone' => '',
         'city' => '',
+        'role_id' => 21,
         'address' => '',
     ];
 }

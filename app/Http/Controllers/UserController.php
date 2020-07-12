@@ -23,7 +23,7 @@ class UserController extends Controller
             'first_name' => $request['first_name'],
             'last_name' => $request['last_name'],
             'email' => $request['email'],
-            'role_id' => 21,
+            'role_id' => $request['role_id'],
             'password' => bcrypt($request['password'])
         ]);
         return response()->json("user created", 201);
