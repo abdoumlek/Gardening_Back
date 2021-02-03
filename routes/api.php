@@ -29,9 +29,7 @@ Route::middleware('auth:api')->group(function () {
     Route::put('categories/{category}', 'CategoryController@update'); //update category admin only
     Route::delete('categories/{category}', 'CategoryController@delete'); //delete category admin only
     Route::post('users/create', 'UserController@createUser'); //add User admin only
-    Route::get('products/upload', 'ProductController@getUploadImageToken'); //liste des produits admins
-    Route::get('galleries/upload', 'GalleryController@getUploadImageToken'); //liste des produits admins
-    Route::put('galleries/{gallery}', 'GalleryController@update'); //update product admin only
+  Route::put('galleries/{gallery}', 'GalleryController@update'); //update product admin only
     Route::post('galleries', 'GalleryController@store'); //update product admin only
     Route::delete('galleries/{gallery}', 'GalleryController@delete'); //update product admin only
 });
@@ -46,4 +44,6 @@ Route::get('products/user/{product}', 'ProductController@userGetProductById'); /
 Route::get('categories', 'CategoryController@categoriesList'); //liste des produits admins
 Route::get('galleries', 'GalleryController@galleriesList'); //liste des produits admins
 
+Route::get('products/upload', 'ProductController@getUploadImageToken'); //liste des produits admins
+Route::get('galleries/upload', 'GalleryController@getUploadImageToken'); //liste des produits admins
 
