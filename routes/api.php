@@ -51,3 +51,6 @@ Route::get('galleries/upload', 'GalleryController@getUploadImageToken'); //liste
 
 Route::post('messages', 'MessageController@store'); 
 Route::post('orders', 'OrdersController@store');
+
+Route::get('sendhtmlemail','MailController@html_email');
+// Route::get('sendattachmentemail','MailController@attachment_email');
