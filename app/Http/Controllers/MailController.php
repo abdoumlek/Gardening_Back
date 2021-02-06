@@ -24,7 +24,6 @@ class MailController extends Controller
             $message->to('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte')->subject($subject);
             $message->from('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte');
         });
-        echo "HTML Email Sent. Check your inbox.";
     }
     // public function attachment_email()
     // {
