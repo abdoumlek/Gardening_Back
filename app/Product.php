@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Order;
 
 class Product extends Model
 {
@@ -16,4 +17,8 @@ class Product extends Model
         'buying_price' => 0,
         'discount' => 0,
     ];
+
+    public function orders(){
+        return $this->belongsToMany(Order::class)->withTimestamps()->withPivot('product_count', 'product_price');
+    }
 }
