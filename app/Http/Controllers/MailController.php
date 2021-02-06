@@ -17,11 +17,11 @@ class MailController extends Controller
     //     });
     //     echo "Basic Email Sent. Check your inbox.";
     // }
-    public function html_email()
+    public function html_email($name, $subject, $content)
     {
-        $data = array('name' => 'Plantes et jardins Bizerte');
-        Mail::send('mail', $data, function ($message) {
-            $message->to('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte')->subject('Laravel HTML Testing Mail');
+        $data = ['name' => $name,'content'=>$content];
+        Mail::send('mail', $data, function ($message) use($subject) {
+            $message->to('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte')->subject($subject);
             $message->from('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte');
         });
         echo "HTML Email Sent. Check your inbox.";
