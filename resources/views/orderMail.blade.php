@@ -18,28 +18,32 @@
 @foreach ($order->products as $product)
 <table>
     <tr>
-        <td>référence du produit: </td>
-        <td>{{$product->id}}</td>
-    </tr>
-    <tr>
-        <td>nom du produit: </td>
-        <td>{{$product->name}}</td>
-    </tr>
-    <tr>
-        <td>image du produit: </td>
-        <td><img src="{{'https://ik.imagekit.io/cjvyejrxtm'.$product->photo.'?tr=h-150,w-150'}}"/></td>
-    </tr>
-    <tr>
-        <td>quantité : </td>
-        <td>{{$product->pivot->product_count}}</td>
-    </tr>
-    <tr>
-        <td>prix unitaire aprés remise : </td>
-        <td>{{number_format($product->pivot->product_price, 3, '.', '')}}TND</td>
+        <td><img src="{{'https://ik.imagekit.io/cjvyejrxtm'.$product->photo.'?tr=h-150,w-150'}}" /></td>
+        <td>
+            <table>
+                <tr>
+                    <td>référence du produit: </td>
+                    <td>{{$product->id}}</td>
+                </tr>
+                <tr>
+                    <td>nom du produit: </td>
+                    <td>{{$product->name}}</td>
+                </tr>
+                <tr>
+                    <td>quantité : </td>
+                    <td><strong>{{$product->pivot->product_count}}</strong></td>
+                </tr>
+                <tr>
+                    <td>prix unitaire aprés remise : </td>
+                    <td>{{number_format($product->pivot->product_price, 3, '.', '')}}TND</td>
+                </tr>
+            </table>
+        </td>
     </tr>
 </table>
+<hr>
 @endforeach
 
-<h2> Montant total avant livraison: {{$total_price_before_delivery}}  </h2>
-<h2> Frais de livraison: {{$delivery_price}}  </h2>
-<h1> Montant total: {{$total_price}}  </h2>
+<h2> Montant total avant livraison: {{$total_price_before_delivery}} </h2>
+<h2> Frais de livraison: {{$delivery_price}} </h2>
+<h1> Montant total: {{$total_price}} </h2>

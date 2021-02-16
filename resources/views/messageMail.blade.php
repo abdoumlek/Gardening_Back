@@ -21,7 +21,7 @@
             <td>{{$content->phone_number}}</td>
       </tr>
       <tr>
-            <td>content: </td>
+            <td>contenu du message: </td>
             <td>{{$content->message}}</td>
       </tr>
 </table>
