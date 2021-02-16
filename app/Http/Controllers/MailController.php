@@ -25,6 +25,22 @@ class MailController extends Controller
             $message->from('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte');
         });
     }
+    public function order_email($order, $subject, $products, $delivery_price, $total_price, $total_price_before_delivery)
+    {
+        $data = ['order' => $order, 'products'=>$products, 'delivery_price'=>$delivery_price ,'total_price'=>$total_price, 'total_price_before_delivery'=>$total_price_before_delivery];
+        Mail::send('orderMail', $data, function ($message) use($subject) {
+            $message->to('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte')->subject($subject);
+            $message->from('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte');
+        });
+    }
+    public function message_email($subject, $content)
+    {
+        $data = ['content' => $content];
+        Mail::send('messageMail', $data, function ($message) use($subject) {
+            $message->to('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte')->subject($subject);
+            $message->from('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte');
+        });
+    }
     // public function attachment_email()
     // {
     //     $data = array('name' => 'Plantes et jardins Bizerte');

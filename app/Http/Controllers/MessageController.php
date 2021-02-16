@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Message;
 use Illuminate\Http\Request;
+use \stdClass;
 
 class MessageController extends  MailController
 {
@@ -14,10 +15,18 @@ class MessageController extends  MailController
         $subject= $request->get("subject");
         $phoneNumber= $request->get("phoneNumber");
         $messageContent= $request->get("message");
+        $email= $request->get("email");
         $lastName= $request->get("lastName");
         $firstName= $request->get("firstName");
-        $content = $lastName . " " . $firstName . " ". $phoneNumber . " " . $messageContent;
-        $this->html_email("Demande Jardins",$subject, $content );
+        $content = new stdClass();
+        $content->subject = $subject;
+        $content->last_name = $lastName;
+        $content->first_name = $firstName;
+        $content->email = $email;
+        $content->phone_number = $phoneNumber;
+        $content->message = $messageContent;
+        // dd($content);
+        $this->message_email($subject, $content );
         return response()->json($message, 201);
     }
     public function adminMessagesList()

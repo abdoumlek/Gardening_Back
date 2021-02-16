@@ -24,8 +24,9 @@ class OrdersController extends MailController
             $content = $content .  " " . $product->id . " " . $product->name . " X " . $productOrder["count"];
             $price =  $price + ($productOrder["count"] * $product->selling_price * (1 - $product->discount));
         }
-        $price = $price + 5;
-        $this->html_email("Commande", "Commande prix" . $price, $content);
+        $formattedPrice = number_format($price + 5, 3, '.', '');
+        $priceBeforeDelivery = number_format($price, 3, '.', '');
+        $this->order_email($order, "Commande prix: " . $formattedPrice.'TND', $order->products, "5.000TND", $formattedPrice.'TND', $priceBeforeDelivery.'TND');
         return response()->json($order, 201);
     }
     public function adminOrdersList()
