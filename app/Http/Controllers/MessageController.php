@@ -25,7 +25,6 @@ class MessageController extends  MailController
         $content->email = $email;
         $content->phone_number = $phoneNumber;
         $content->message = $messageContent;
-        // dd($content);
         $this->message_email($subject, $content );
         return response()->json($message, 201);
     }

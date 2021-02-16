@@ -44,6 +44,6 @@
 <hr>
 @endforeach
 
-<h2> Montant total avant livraison: {{$total_price_before_delivery}} </h2>
-<h2> Frais de livraison: {{$delivery_price}} </h2>
+<p> Montant sans frais de livraison: {{$total_price_before_delivery}} </p>
+<p> Frais de livraison: {{$delivery_price}} </p>
 <h1> Montant total: {{$total_price}} </h2>
