@@ -23,7 +23,7 @@ Route::middleware('auth:api')->group(function () {
   Route::get('products/admin', 'ProductController@adminProductsList'); //liste des produits admins
   Route::get('products/admin/{product}', 'ProductController@adminGetProductById'); //get porduct as admin
   Route::post('products', 'ProductController@store'); //add product admin only
-  Route::put('products/{product}', 'ProductController@update'); //update product admin only
+  Route::put('products', 'ProductController@update'); //add product admin only
   Route::delete('products/{product}', 'ProductController@delete'); //delete product admin only
   Route::post('categories', 'CategoryController@store'); //add category admin only
   Route::put('categories/{category}', 'CategoryController@update'); //update category admin only

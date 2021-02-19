@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function adminProductsList()
     {
-        return Product::join('categories', 'categories.id', '=', 'category_id')->select('categories.name as category', 'products.id', 'reference', 'products.name', 'photo', 'buying_price', 'selling_price', 'quantity')->get();
+        return Product::join('categories', 'categories.id', '=', 'category_id')->select('categories.name as category', 'products.*')->get();
     }
 
     public function userProductsList()
@@ -33,8 +33,9 @@ class ProductController extends Controller
         return response()->json($product, 201);
     }
 
-    public function update(Request $request, Product $product)
+    public function update(Request $request)
     {
+        $product  = Product::find($request->get("id"));
         $product->update($request->all());
         return response()->json($product, 200);
     }
