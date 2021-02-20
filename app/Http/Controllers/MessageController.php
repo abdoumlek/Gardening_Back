@@ -37,4 +37,11 @@ class MessageController extends  MailController
     {
         return Message::where('id', $messageId)->first();
     }
+
+    public function update(Request $request)
+    {
+        $message  = Message::find($request->get("id"));
+        $message->update($request->all());
+        return response()->json($message, 200);
+    }
 }

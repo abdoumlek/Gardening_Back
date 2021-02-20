@@ -34,6 +34,9 @@ Route::middleware('auth:api')->group(function () {
   Route::delete('galleries/{gallery}', 'GalleryController@delete'); //update product admin only
   Route::get('messages', 'MessageController@adminMessagesList'); //get porduct as admin
   Route::get('orders', 'OrdersController@adminOrdersList'); //get porduct as admin
+  Route::get('orders/{order}', 'OrdersController@adminGetOrderById'); //get order as admin
+  Route::get('messages/{message}', 'MessageController@adminGetMessageById'); //get message as admin
+
 });
 
 

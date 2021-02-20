@@ -25,8 +25,9 @@ class GalleryController extends Controller
         return response()->json($gallery, 201);
     }
 
-    public function update(Request $request, Gallery $gallery)
+    public function update(Request $request)
     {
+        $gallery  = Gallery::find($request->get("id"));
         $gallery->update($request->all());
         return response()->json($gallery, 200);
     }

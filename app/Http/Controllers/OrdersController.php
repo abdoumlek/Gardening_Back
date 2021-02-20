@@ -31,11 +31,18 @@ class OrdersController extends MailController
     }
     public function adminOrdersList()
     {
-        return Order::with('products')->get();
+        return Order::with("products")->get();
     }
 
     public function adminGetOrderById($orderId)
     {
-        return Order::where('id', $orderId)->first();
+        return Order::where('id', $orderId)->with("products")->first();
+    }
+
+    public function update(Request $request)
+    {
+        $order  = Order::find($request->get("id"));
+        $order->update($request->all());
+        return response()->json($order, 200);
     }
 }
