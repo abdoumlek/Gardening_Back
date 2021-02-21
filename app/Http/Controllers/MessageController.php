@@ -30,7 +30,7 @@ class MessageController extends  MailController
     }
     public function adminMessagesList()
     {
-        return Message::where('status','new')->get();
+        return Message::all();
     }
 
     public function adminGetMessageById($messageId)
