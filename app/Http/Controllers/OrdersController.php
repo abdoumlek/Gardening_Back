@@ -31,7 +31,7 @@ class OrdersController extends MailController
     }
     public function adminOrdersList()
     {
-        return Order::with("products")->get();
+        return Order::with("products")->where('status','new')->get();
     }
 
     public function adminGetOrderById($orderId)
