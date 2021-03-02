@@ -15,7 +15,7 @@ class ProductController extends Controller
 
     public function userProductsList()
     {
-        return Product::join('categories', 'categories.id', '=', 'category_id')->select('categories.name  as category', 'products.id', 'reference', 'products.name', 'photo', 'discount', 'selling_price')->get();
+        return Product::join('categories', 'categories.id', '=', 'category_id')->select('categories.name  as category', 'products.id', 'reference', 'products.name', 'photo', 'discount', 'selling_price','quantity')->get();
     }
 
     public function userGetProductById(Product $product)
