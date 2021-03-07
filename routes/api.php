@@ -38,9 +38,8 @@ Route::middleware('auth:api')->group(function () {
   Route::put('orders', 'OrdersController@update'); //get order as admin
   Route::get('messages/{message}', 'MessageController@adminGetMessageById'); //get message as admin
   Route::put('messages', 'MessageController@update'); //get message as admin
-
+  Route::post('loadImage', 'ImageController@loadImage');
 });
-
 
 //Users
 Route::post('users/login', 'LoginController@login'); //add product admin only
