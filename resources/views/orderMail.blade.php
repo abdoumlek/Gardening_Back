@@ -18,7 +18,7 @@
 @foreach ($order->products as $product)
 <table>
     <tr>
-        <td><img src="{{'https://ik.imagekit.io/cjvyejrxtm'.$product->photo.'?tr=h-150,w-150'}}" /></td>
+        <td><img src="{{'https://backend.plantes-et-jardins-bizerte.tn/thumbnails/'.$product->photo}}" /></td>
         <td>
             <table>
                 <tr>

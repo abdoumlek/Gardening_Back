@@ -7,22 +7,12 @@ use Mail;
 
 class MailController extends Controller
 {
-    // public function basic_email()
-    // {
-    //     $data = array('name' => 'Plantes et jardins Bizerte');
-
-    //     Mail::send(['text' => 'mail'], $data, function ($message) {
-    //         $message->to('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte')->subject('Laravel Basic Testing Mail');
-    //         $message->from('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte');
-    //     });
-    //     echo "Basic Email Sent. Check your inbox.";
-    // }
     public function html_email($name, $subject, $content)
     {
         $data = ['name' => $name,'content'=>$content];
         Mail::send('mail', $data, function ($message) use($subject) {
             $message->to('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte')->subject($subject);
-            $message->from('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte');
+            $message->from('plantese@plantes-et-jardins-bizerte.tn', 'Plantes et jardins Bizerte');
         });
     }
     public function order_email($order, $subject, $products, $delivery_price, $total_price, $total_price_before_delivery)
@@ -30,7 +20,7 @@ class MailController extends Controller
         $data = ['order' => $order, 'products'=>$products, 'delivery_price'=>$delivery_price ,'total_price'=>$total_price, 'total_price_before_delivery'=>$total_price_before_delivery];
         Mail::send('orderMail', $data, function ($message) use($subject) {
             $message->to('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte')->subject($subject);
-            $message->from('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte');
+            $message->from('plantese@plantes-et-jardins-bizerte.tn', 'Plantes et jardins Bizerte');
         });
     }
     public function message_email($subject, $content)
@@ -38,7 +28,7 @@ class MailController extends Controller
         $data = ['content' => $content];
         Mail::send('messageMail', $data, function ($message) use($subject) {
             $message->to('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte')->subject($subject);
-            $message->from('plantesetjardinsbizerte@gmail.com', 'Plantes et jardins Bizerte');
+            $message->from('plantese@plantes-et-jardins-bizerte.tn', 'Plantes et jardins Bizerte');
         });
     }
     // public function attachment_email()
