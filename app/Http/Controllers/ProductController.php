@@ -20,7 +20,7 @@ class ProductController extends Controller
 
     public function userGetProductById(Product $product)
     {
-        return Product::join('categories', 'categories.id', '=', 'category_id')->where('products.id', $product->id)->select('categories.name  as category', 'reference', 'products.name', 'photo', 'discount', 'products.description', 'selling_price', 'quantity')->first();
+        return Product::join('categories', 'categories.id', '=', 'category_id')->where('products.id', $product->id)->select('categories.name  as category', 'reference', 'products.name', 'photo', 'discount', 'products.description', 'selling_price', 'quantity','products.id')->first();
     }
     public function adminGetProductById(Product $product)
     {
